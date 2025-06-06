@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Generator</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🐱 Cat Generator 🐱</h1>
+        
+        <div class="cat-display">
+            <% if (error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } else { %>
+                <img id="catImage" src="<%= catData.url %>" alt="Random Cat">
+                <div class="cat-info">
+                    <p>Tags: <%= catData.tags.join(', ') %></p>
+                    <p>Created: <%= new Date(catData.created_at).toLocaleDateString() %></p>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <h2>Basic Options</h2>
+                
+                <div class="option-card">
+                    <h3>Random Cat</h3>
+                    <p class="description">Get a completely random cat image</p>
+                    <button id="randomCat" class="primary-button">Get Random Cat</button>
+                </div>
+
+                <div class="option-card">
+                    <h3>Cat by Tag</h3>
+                    <p class="description">Get a cat with specific tags (e.g., cute, orange)</p>
+                    <div class="input-with-button">
+                        <input type="text" id="tagInput" placeholder="Enter tags (e.g., cute,orange)">
+                        <button id="catByTag">Get Cat</button>
+                    </div>
+                </div>
+
+                <div class="option-card">
+                    <h3>Cat Saying Text</h3>
+                    <p class="description">Get a cat with custom text</p>
+                    <div class="input-with-button">
+                        <input type="text" id="textInput" placeholder="Enter text for cat to say">
+                        <button id="catSaying">Get Cat</button>
+                    </div>
+                </div>
+
+                <div class="option-card">
+                    <h3>Tagged Cat Saying Text</h3>
+                    <p class="description">Get a cat with specific tags and custom text</p>
+                    <div class="input-group">
+                        <input type="text" id="tagTextInput" placeholder="Enter tag">
+                        <input type="text" id="sayingTextInput" placeholder="Enter text">
+                        <button id="catWithTagSaying">Get Cat</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h2>Advanced Options</h2>
+                
+                <div class="option-card">
+                    <h3>Image Size</h3>
+                    <p class="description">Choose the size of the cat image</p>
+                    <div class="input-with-button">
+                        <select id="typeSelect">
+                            <option value="xsmall">XSmall</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="square">Square</option>
+                        </select>
+                        <button id="catByType">Get Cat</button>
+                    </div>
+                </div>
+
+                <div class="option-card">
+                    <h3>Image Filter</h3>
+                    <p class="description">Apply different filters to the cat image</p>
+                    <div class="input-with-button">
+                        <select id="filterSelect">
+                            <option value="blur">Blur</option>
+                            <option value="mono">Mono</option>
+                            <option value="negate">Negate</option>
+                        </select>
+                        <button id="catByFilter">Get Cat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/catGenerator.js"></script>
+</body>
+</html> 
